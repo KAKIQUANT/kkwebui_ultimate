@@ -1,17 +1,51 @@
 // pages/Login.jsx
 import React, { useState } from 'react';
+import axios from 'axios'; // Import Axios
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import Navbar from '../components/Navbar'; // 导航栏
 import Footer from '../components/Footer'; // 页脚
 import '../index.css'; // 引入全局样式
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState(''); // Changed from email to username
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState(''); // State for displaying messages
+  const [loading, setLoading] = useState(false); // State for loading indicator
 
-  const handleLogin = (e) => {
+  const navigate = useNavigate(); // Hook for navigation
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // 处理登录逻辑
-    console.log('登录信息：', { email, password });
+    setLoading(true);
+    setMessage('');
+    try {
+      // Send POST request to backend login endpoint
+      const response = await axios.post('https://localhost:8000/login', {
+        username,
+        password,
+      });
+
+      if (response.data.code === 0) {
+        // Login successful
+        localStorage.setItem('token', response.data.access_token); // Store token
+        setMessage('登录成功！正在跳转...');
+        setTimeout(() => {
+          navigate('/settings'); // Redirect to settings page
+        }, 2000);
+      } else {
+        // Handle login failure
+        setMessage(response.data.msg || '登录失败，请重试。');
+      }
+    } catch (error) {
+      // Handle errors
+      if (error.response && error.response.data) {
+        setMessage(error.response.data.msg || '登录失败，请重试。');
+      } else {
+        setMessage('登录失败，请检查网络连接。');
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -21,13 +55,14 @@ const Login = () => {
         <h2>登录</h2>
         <form onSubmit={handleLogin}>
           <div className="form-group">
-            <label htmlFor="email">电子邮件:</label>
+            <label htmlFor="username">用户名:</label>
             <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
+              autoComplete="username"
             />
           </div>
           <div className="form-group">
@@ -38,11 +73,17 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoComplete="current-password"
             />
           </div>
-          <button type="submit">登录</button>
+          <button type="submit" disabled={loading}>
+            {loading ? '登录中...' : '登录'}
+          </button>
         </form>
-        <p>没有账号？<a href="/register">注册</a></p>
+        {message && <p className="message">{message}</p>}
+        <p>
+          没有账号？<a href="/register">注册</a>
+        </p>
       </div>
       <Footer />
     </div>
