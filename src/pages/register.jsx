@@ -21,7 +21,7 @@ const Register = () => {
     setMessage('');
     try {
       // Send POST request to backend register endpoint
-      const response = await axios.post('https://localhost:8000/register', {
+      const response = await axios.post('http://localhost:8000/register', {
         username,
         password,
         invite_code: inviteCode || undefined, // Include invite_code if provided
