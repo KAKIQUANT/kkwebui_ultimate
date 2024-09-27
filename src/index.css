@@ -42,9 +42,27 @@ nav ul li:hover a {
   color: #ff9800;  /* 鼠标悬停时的颜色变化 */
 }
 
+/* 导航栏按钮样式 */
 nav div button {
   margin-left: 10px; /* 登录和注册按钮之间的间距 */
+  padding: 10px 20px;
+  background-color: orange; /* 按钮的橙色背景 */
+  border: none;
+  border-radius: 5px;
+  color: white; /* 白色的按钮文字 */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
+
+nav div button:hover {
+  background-color: #e57c00; /* 鼠标悬停时的背景颜色 */
+}
+
+nav div button:focus {
+  outline: none; /* 去掉聚焦时的边框 */
+}
+
 
 /* 主页面内容和布局 */
 .content-wrapper {
@@ -98,7 +116,7 @@ nav div button {
 
 .data-item button {
   padding: 10px 20px;
-  background-color: #ff9800;
+  background-color: orange;
   border: none;
   color: white;
   cursor: pointer;
@@ -209,7 +227,6 @@ a:hover {
 }
 
 /* 更高级的选择标签栏 */
-/* index.css */
 .category-select {
   margin-bottom: 20px;
 }
@@ -249,7 +266,7 @@ a:hover {
   display: inline-block;
   margin-top: 10px;
   padding: 8px 12px;
-  background-color: #ff9800;
+  background-color: orange;
   color: white;
   border-radius: 5px;
   text-decoration: none;
@@ -258,7 +275,6 @@ a:hover {
 .view-button:hover {
   background-color: #e57c00;
 }
-/* index.css */
 
 /* 因子研究看板页面的样式 */
 .factor-page {
@@ -279,41 +295,9 @@ h1 {
 }
 
 .ant-btn-primary {
-  background-color: #ff9800;
-  border-color: #ff9800;
+  background-color: orange;
+  border-color: orange;
 }
-/* index.css */
-.factor-page {
-  padding: 20px;
-}
-
-h1 {
-  color: #333;
-}
-
-.ant-table {
-  background-color: #fff;
-  margin-top: 20px;
-}
-
-.ant-modal-body {
-  background-color: #f5f5f5;
-}
-
-.ant-btn-primary {
-  background-color: #ff9800;
-  border-color: #ff9800;
-}
-
-.ant-select {
-  margin-bottom: 20px;
-}
-
-.ant-tooltip {
-  font-size: 12px;
-  color: #000;
-}
-/* index.css */
 
 /* 页面整体布局 */
 .programming-page {
@@ -362,11 +346,21 @@ h1 {
   background-size: 100px 100px;
   opacity: 0.1;
 }
+
 /* 通用footer样式 */
+/* 内容区域，需要弹性填充剩余空间 */
+.content-wrapper {
+  flex: 1 0 auto; /* This ensures that the content takes up all available space above the footer */
+  padding: 20px;
+}
+
+/* Footer 样式，确保它始终位于页面底部 */
 .footer {
+  flex-shrink: 0; /* Prevent footer from shrinking */
   background-color: #333;
   padding: 40px 0;
   color: white;
+  text-align: center;
 }
 
 .footer-container {
@@ -462,34 +456,25 @@ h1 {
   color: #fff;
 }
 
-/* 取消按钮始终为点击状态的效果 */
-button {
-  padding: 10px 20px;
-  background-color: orange;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #e57c00;
-}
-
-button:active {
-  background-color: #cc7a00; /* 调整点击后的颜色 */
-}
-
-button:focus {
-  outline: none;
-}
-
 /* 模拟交易页面的样式 */
-.trading-page {
-  padding: 20px;
+/* 模拟交易页面的表格样式，黑色文字 */
+.trading-page table th,
+.trading-page table td {
+  color: black; /* 设置表格文字为黑色 */
+  background-color: #f8f8f8; /* 保持表格的浅色背景，确保黑字清晰可见 */
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
+
+.trading-page table th {
+  background-color: #ff9800; /* 表头背景为橙色 */
+  color: white; /* 表头文字为白色 */
+}
+
+.trading-page table tbody tr:hover {
+  background-color: #f1f1f1; /* 鼠标悬停时的行背景 */
+}
+
 
 /* 顶部切换按钮 */
 .tab-switch {
@@ -506,7 +491,7 @@ button:focus {
 }
 
 .tab-switch button.active {
-  background-color: #ff9800;
+  background-color: orange;
   color: white;
 }
 
@@ -535,7 +520,7 @@ table th {
 
 .create-portfolio-btn {
   padding: 10px 20px;
-  background-color: #ff9800;
+  background-color: orange;
   color: white;
   border: none;
   cursor: pointer;
@@ -544,6 +529,7 @@ table th {
 .create-portfolio-btn:hover {
   background-color: #e57c00;
 }
+
 /* 样式表更新 */
 .styled-table {
   width: 100%;
@@ -551,7 +537,7 @@ table th {
 }
 
 .styled-table thead tr {
-  background-color: #ff9800;
+  background-color: orange;
   color: white;
   text-align: center;
   font-weight: bold;
@@ -573,5 +559,64 @@ table th {
 .chart-container {
   margin-top: 30px;
 }
+/* Top factors section */
+.top-factors-section {
+  margin-top: 40px;
+}
 
+.top-factors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.factor-card {
+  background-color: #292929;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.factor-card h3 {
+  color: #ffffff;
+}
+
+.factor-card p {
+  color: #ff9800;
+}
+/* Chart container */
+.chart-container {
+  width: 100%;
+  height: 400px;
+  margin-top: 30px;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #444;
+}
+
+.recharts-tooltip-wrapper {
+  color: white;
+  background-color: #333;
+  border-radius: 5px;
+}
+
+.recharts-bar-rectangle {
+  stroke: #ff9800;
+  stroke-width: 1px;
+}
+
+.recharts-bar-rectangle:hover {
+  fill: #e57c00;
+}
+
+/* Custom for Pie and Radar chart */
+.recharts-radar {
+  stroke: #ff9800;
+}
+
+.recharts-radar:hover {
+  fill: #e57c00;
+}
 
