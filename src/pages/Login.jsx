@@ -20,7 +20,7 @@ const Login = () => {
     setMessage('');
     try {
       // Send POST request to backend login endpoint
-      const response = await axios.post('http://localhost:8000/login', {
+      const response = await axios.post('http://10.201.8.89:8000/login', {
         username,
         password,
       });
