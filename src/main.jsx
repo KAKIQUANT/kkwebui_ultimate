@@ -9,7 +9,8 @@ import ProgrammingPage from './pages/programming';
 import Login from './pages/Login';
 import Register from './pages/register';
 import Trading from './pages/trading';
-
+import Settings from './pages/Settings';
+import About from './pages/About';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -24,6 +25,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/trading" element={<Trading />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
