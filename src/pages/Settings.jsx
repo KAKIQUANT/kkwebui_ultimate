@@ -17,7 +17,7 @@ const Settings = () => {
     totalQuota: 0,
     usedQuota: 0,
   });
-  const [apiKeys, setApiKeys] = useState([]);
+  const [apiKeys, setApiKeys] = useState([]); // Initialize apiKeys as an empty array
   const [newApiKeyName, setNewApiKeyName] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -69,9 +69,15 @@ const Settings = () => {
       const response = await axios.get('http://10.201.8.89:8000/users/api-keys', {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setApiKeys(response.data.api_keys);
+      // Ensure apiKeys is defined and is an array
+      if (response.data && Array.isArray(response.data.api_keys)) {
+        setApiKeys(response.data.api_keys);
+      } else {
+        setApiKeys([]); // Default to an empty array if no keys are returned
+      }
     } catch (error) {
       console.error('Error fetching API keys:', error);
+      setApiKeys([]); // Ensure apiKeys is always an array
     }
   };
 
@@ -208,9 +214,9 @@ const Settings = () => {
 
         <h3>API 配额</h3>
         <div className="api-quota">
-          <p>总配额：{apiQuota.total_quota}</p>
-          <p>已使用：{apiQuota.used_quota}</p>
-          <p>剩余：{apiQuota.total_quota - apiQuota.used_quota}</p>
+          <p>总配额：{apiQuota.totalQuota}</p>
+          <p>已使用：{apiQuota.usedQuota}</p>
+          <p>剩余：{apiQuota.totalQuota - apiQuota.usedQuota}</p>
         </div>
 
         <h3>API 密钥管理</h3>
@@ -236,16 +242,22 @@ const Settings = () => {
               </tr>
             </thead>
             <tbody>
-              {apiKeys.map((key) => (
-                <tr key={key.id}>
-                  <td>{key.name}</td>
-                  <td>{key.key}</td>
-                  <td>{new Date(key.created_at).toLocaleString()}</td>
-                  <td>
-                    <button onClick={() => handleDeleteApiKey(key.id)}>删除</button>
-                  </td>
+              {Array.isArray(apiKeys) && apiKeys.length > 0 ? (
+                apiKeys.map((key) => (
+                  <tr key={key.id}>
+                    <td>{key.name}</td>
+                    <td>{key.key}</td>
+                    <td>{new Date(key.created_at).toLocaleString()}</td>
+                    <td>
+                      <button onClick={() => handleDeleteApiKey(key.id)}>删除</button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4">没有API密钥。</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
