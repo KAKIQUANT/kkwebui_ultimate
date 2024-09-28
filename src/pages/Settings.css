@@ -1,0 +1,97 @@
+/* Settings.css */
+
+.settings-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+  }
+  
+  .settings-container h2,
+  .settings-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .settings-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .settings-container .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .settings-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .settings-container input {
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .settings-container button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .settings-container button:disabled {
+    background-color: #7fb3d5;
+    cursor: not-allowed;
+  }
+  
+  .settings-container button:hover:not(:disabled) {
+    background-color: #21618c;
+  }
+  
+  .settings-container .message {
+    text-align: center;
+    margin-top: 15px;
+    color: green;
+  }
+  
+  .settings-container .api-quota,
+  .settings-container .api-keys {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
+  .settings-container .api-quota p,
+  .settings-container .api-keys p {
+    margin-bottom: 10px;
+  }
+  
+  .settings-container .api-keys-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .settings-container .api-keys-table th,
+  .settings-container .api-keys-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .settings-container .api-keys-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .settings-container .logout-button {
+    background-color: #e74c3c;
+    margin-top: 30px;
+  }
+  
+  .settings-container .logout-button:hover {
+    background-color: #c0392b;
+  }
+  
