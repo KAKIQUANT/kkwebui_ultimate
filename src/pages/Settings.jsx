@@ -4,7 +4,7 @@ import axios from 'axios';
 import Navbar from '../components/Navbar'; // 导航栏
 import Footer from '../components/Footer'; // 页脚
 import { useNavigate } from 'react-router-dom';
-import '../index.css'; // 引入全局样式
+import './Settings.css'; // 引入全局样式
 
 const Settings = () => {
   const [userInfo, setUserInfo] = useState({
