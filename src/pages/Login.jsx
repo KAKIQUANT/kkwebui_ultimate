@@ -1,16 +1,17 @@
-// pages/Login.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Import Axios
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import Navbar from '../components/Navbar'; // 导航栏
 import Footer from '../components/Footer'; // 页脚
 import '../index.css'; // 引入全局样式
+import './Login.css'; // Import the new login styles
 
 const Login = () => {
-  const [username, setUsername] = useState(''); // Changed from email to username
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState(''); // Username input
+  const [password, setPassword] = useState(''); // Password input
   const [message, setMessage] = useState(''); // State for displaying messages
   const [loading, setLoading] = useState(false); // State for loading indicator
+  const [nickname, setNickname] = useState(null); // Store the user's nickname after login
 
   const navigate = useNavigate(); // Hook for navigation
 
@@ -26,9 +27,10 @@ const Login = () => {
       });
 
       if (response.data.code === 0) {
-        // Login successful
+        // Login successful, store token and nickname
         localStorage.setItem('token', response.data.access_token); // Store token
-        setMessage('登录成功！正在跳转...');
+        setNickname(response.data.nickname); // Assuming the backend sends the nickname
+        setMessage('登录成功！');
         setTimeout(() => {
           navigate('/settings'); // Redirect to settings page
         }, 2000);
@@ -37,7 +39,6 @@ const Login = () => {
         setMessage(response.data.msg || '登录失败，请重试。');
       }
     } catch (error) {
-      // Handle errors
       if (error.response && error.response.data) {
         setMessage(error.response.data.msg || '登录失败，请重试。');
       } else {
@@ -51,6 +52,11 @@ const Login = () => {
   return (
     <div>
       <Navbar />
+      {nickname && (
+        <div className="user-circle">
+          {nickname[0].toUpperCase()}
+        </div>
+      )}
       <div className="login-container">
         <h2>登录</h2>
         <form onSubmit={handleLogin}>
