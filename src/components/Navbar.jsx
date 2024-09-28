@@ -15,6 +15,7 @@ function Navbar() {
         <li><Link to="/factors">因子研究</Link></li>
         <li><Link to="/strategy">策略社区</Link></li>
         <li><Link to="/trading">我的交易</Link></li>
+        <li><Link to="/about">关于我们</Link></li>
 
         <li className="dropdown">
           知识库
