@@ -1,0 +1,195 @@
+/* Base Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5; /* Light background */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #111827; /* Dark black color for the header */
+    color: #ffffff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    color: #f97316; /* Orange on hover */
+}
+
+/* Hero Section */
+.hero {
+    background: #f97316; /* Orange background */
+    color: #ffffff;
+    text-align: center;
+    padding: 4rem 1.5rem;
+    border-bottom: 8px solid #111827; /* Black underline for contrast */
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+    line-height: 1.75;
+}
+
+/* Main Content */
+.main-content {
+    max-width: 800px; /* Constrain content width */
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mission Section */
+.mission-section {
+    margin-bottom: 2rem;
+}
+
+.mission-section h2 {
+    font-size: 2.5rem;
+    color: #111827; /* Black for strong emphasis */
+    margin-bottom: 1rem;
+}
+
+.mission-section p {
+    font-size: 1.125rem;
+    color: #4b5563; /* Mid-gray */
+}
+
+/* Disclaimer Section */
+.disclaimer-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+    .disclaimer-section {
+        grid-template-columns: 1fr 1fr; /* Two-column layout for larger screens */
+    }
+}
+
+.disclaimer-card {
+    background-color: #fef3c7; /* Light orange background for visual interest */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.disclaimer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.disclaimer-card .icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #111827; /* Black for contrast */
+}
+
+.disclaimer-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827; /* Black for emphasis */
+    margin-bottom: 0.75rem;
+}
+
+.disclaimer-card p {
+    font-size: 1rem;
+    color: #4b5563; /* Mid-gray */
+    line-height: 1.5;
+}
+
+/* Acknowledgment Text */
+.acknowledgment-text {
+    text-align: center;
+    color: #6b7280; /* Light Gray */
+    font-size: 0.875rem;
+    margin-top: 3rem;
+    padding: 1rem;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+}
+
+/* Footer */
+.footer {
+    background-color: #111827;
+    color: #9ca3af; /* Light Gray */
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer a {
+    color: #9ca3af;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.footer a:hover {
+    color: #f97316; /* Orange on hover */
+}
+
+/* Button Styling (if needed) */
+.button {
+    background-color: #f97316; /* Orange */
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #ea580c; /* Darker Orange */
+}
+
+/* Additional Utility Classes */
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mt-8 {
+    margin-top: 2rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mb-8 {
+    margin-bottom: 2rem;
+}
+
+.rounded-lg {
+    border-radius: 12px;
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+

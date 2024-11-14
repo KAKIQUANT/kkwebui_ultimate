@@ -8,28 +8,44 @@ body {
   color: #ffffff;
 }
 
+/* 动态背景科技效果 */
+.background-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #2e2e2e 25%, transparent 25%) -50px 0,
+              linear-gradient(225deg, #2e2e2e 25%, transparent 25%) -50px 0,
+              linear-gradient(315deg, #2e2e2e 25%, transparent 25%),
+              linear-gradient(45deg, #2e2e2e 25%, transparent 25%);
+  background-size: 100px 100px;
+  opacity: 0.1;
+}
+
 /* 导航栏布局 */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #151515;
+  background-color: #151515; /* Dark black background */
   color: white;
-  position: sticky;  /* 确保导航栏在页面顶部固定 */
+  position: sticky; /* Stays at the top */
   top: 0;
-  z-index: 1000;  /* 保证导航栏在其他内容之上 */
+  z-index: 1000; /* Always on top */
 }
 
 nav ul {
-  display: flex;  /* 使用flexbox使菜单水平排列 */
+  display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 nav ul li {
-  margin-right: 20px;  /* 菜单项之间的间距 */
+  margin-right: 20px; /* Space between items */
   cursor: pointer;
 }
 
@@ -39,7 +55,7 @@ nav ul li a {
 }
 
 nav ul li:hover a {
-  color: #ff9800;  /* 鼠标悬停时的颜色变化 */
+  color: #ff9800; /* Hover color change to orange */
 }
 
 /* 导航栏按钮样式 */
@@ -63,12 +79,17 @@ nav div button:focus {
   outline: none; /* 去掉聚焦时的边框 */
 }
 
-
 /* 主页面内容和布局 */
 .content-wrapper {
   display: flex;
-  height: calc(100vh - 80px); /* 除去导航栏的高度 */
+  min-height: calc(100vh - 80px); /* Ensure it covers the viewport height minus navbar */
   padding: 20px;
+  flex-direction: column;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
 }
 
 /* 侧边栏样式 */
@@ -120,47 +141,137 @@ nav div button:focus {
   border: none;
   color: white;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .data-item button:hover {
   background-color: #e57c00;
 }
 
-/* 英雄区域样式 */
+/* Hero Section */
 .hero-section {
-  height: 80vh;
+  background: linear-gradient(to right, #f97316, #111827), url('https://source.unsplash.com/random/1600x900/?finance,stock');
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+  text-align: center;
+  padding: 5rem 2rem;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  position: relative;
+  overflow: hidden;
+  height: 80vh;
 }
 
-.hero-section h1 {
+.hero-content {
+  max-width: 800px;
+  z-index: 1;
+}
+
+.hero-title {
   font-size: 3rem;
+  font-weight: 700;
   margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cta-primary,
+.cta-secondary {
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.cta-primary {
+  background-color: #f97316;
+  border: none;
   color: #ffffff;
 }
 
-/* 新闻区域样式 */
+.cta-primary:hover {
+  background-color: #ea580c;
+  transform: translateY(-2px);
+}
+
+.cta-secondary {
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.cta-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Icon Element */
+.hero-icon {
+  position: absolute;
+  right: 10%;
+  bottom: 5%;
+  font-size: 10rem;
+  opacity: 0.1;
+  color: #ffffff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+  .hero-icon {
+    display: none;
+  }
+  .sidebar {
+    display: none; /* Hide sidebar on smaller screens */
+  }
+  .data-content {
+    margin-left: 0;
+  }
+  .data-grid {
+    grid-template-columns: 1fr; /* Single column layout */
+  }
+}
+
+/* News Section */
 .news-section {
   padding: 2rem;
-  background-color: #1c1c1c; /* 深色新闻背景 */
+  background-color: #1c1c1c; /* Dark news background */
 }
 
 .news-item {
   margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: #292929;
+  padding: 1.5rem;
+  background-color: #292929; /* Slightly lighter than the news section background */
   border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .news-item:hover {
-  background-color: #ff9800;
-  transition: background-color 0.3s ease;
+  background-color: #ff9800; /* Highlight with orange when hovered */
+  color: #000000; /* Change text color for contrast */
 }
 
-/* 按钮样式 */
+/* 通用按钮样式 */
 button {
   padding: 10px 20px;
   margin: 0 10px;
@@ -224,6 +335,12 @@ a:hover {
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1rem;
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.search-bar input::placeholder {
+  color: #aaa;
 }
 
 /* 更高级的选择标签栏 */
@@ -270,6 +387,7 @@ a:hover {
   color: white;
   border-radius: 5px;
   text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .view-button:hover {
@@ -279,15 +397,18 @@ a:hover {
 /* 因子研究看板页面的样式 */
 .factor-page {
   padding: 20px;
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
-h1 {
-  color: #333;
+.factor-page h1 {
+  color: #ffffff;
 }
 
 .ant-table {
-  background-color: #fff;
+  background-color: #2a2a2a;
   margin-top: 20px;
+  color: #ffffff;
 }
 
 .ant-modal-body {
@@ -299,6 +420,12 @@ h1 {
   border-color: orange;
 }
 
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background-color: #e57c00;
+  border-color: #e57c00;
+}
+
 /* 页面整体布局 */
 .programming-page {
   padding: 20px;
@@ -307,7 +434,7 @@ h1 {
   min-height: 100vh;
 }
 
-h1 {
+.programming-page h1 {
   color: #ffffff;
   text-align: center;
   margin-bottom: 20px;
@@ -321,6 +448,8 @@ h1 {
 .jupyter-iframe {
   border: none;
   box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 600px; /* Ensure iframe is responsive */
 }
 
 /* 实时代码编辑器 */
@@ -329,49 +458,28 @@ h1 {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 20px rgba(255, 165, 0, 0.2);
-}
-
-/* 动态背景科技效果 */
-.background-effect {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(135deg, #2e2e2e 25%, transparent 25%) -50px 0,
-              linear-gradient(225deg, #2e2e2e 25%, transparent 25%) -50px 0,
-              linear-gradient(315deg, #2e2e2e 25%, transparent 25%),
-              linear-gradient(45deg, #2e2e2e 25%, transparent 25%);
-  background-size: 100px 100px;
-  opacity: 0.1;
-}
-
-/* 通用footer样式 */
-/* 内容区域，需要弹性填充剩余空间 */
-.content-wrapper {
-  flex: 1 0 auto; /* This ensures that the content takes up all available space above the footer */
-  padding: 20px;
+  color: #ffffff;
 }
 
 /* Footer 样式，确保它始终位于页面底部 */
 .footer {
-  flex-shrink: 0; /* Prevent footer from shrinking */
   background-color: #333;
-  padding: 40px 0;
+  padding: 40px 20px;
   color: white;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .footer-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: flex-start;
 }
 
 .footer-section {
-  flex: 1;
-  margin: 0 20px;
+  flex: 1 1 200px;
+  margin: 20px;
 }
 
 .footer-section h3 {
@@ -400,11 +508,13 @@ h1 {
 /* 二维码部分样式 */
 .qr-section {
   text-align: center;
+  margin-top: 20px;
 }
 
 .qr-codes {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -422,6 +532,7 @@ h1 {
 .qr-code p {
   color: white;
 }
+
 /* 登录页面样式 */
 .login-container {
   max-width: 400px;
@@ -430,7 +541,7 @@ h1 {
   background-color: #2a2a2a;
   color: #fff;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .login-container h2 {
@@ -456,12 +567,26 @@ h1 {
   color: #fff;
 }
 
+.form-group input::placeholder {
+  color: #aaa;
+}
+
 /* 模拟交易页面的样式 */
-/* 模拟交易页面的表格样式，黑色文字 */
+.trading-page {
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.trading-page table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
 .trading-page table th,
 .trading-page table td {
-  color: black; /* 设置表格文字为黑色 */
-  background-color: #f8f8f8; /* 保持表格的浅色背景，确保黑字清晰可见 */
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
@@ -471,10 +596,15 @@ h1 {
   color: white; /* 表头文字为白色 */
 }
 
-.trading-page table tbody tr:hover {
-  background-color: #f1f1f1; /* 鼠标悬停时的行背景 */
+.trading-page table td {
+  color: #ffffff; /* Ensure table data text is white for dark background */
+  background-color: #2a2a2a; /* Darker background for table cells */
 }
 
+.trading-page table tbody tr:hover {
+  background-color: #e57c00; /* Hover background color */
+  color: #000000; /* Change text color for contrast on hover */
+}
 
 /* 顶部切换按钮 */
 .tab-switch {
@@ -488,6 +618,8 @@ h1 {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .tab-switch button.active {
@@ -496,20 +628,33 @@ h1 {
 }
 
 /* 策略列表样式 */
-table {
+.styled-table {
   width: 100%;
   border-collapse: collapse;
-  overflow-x: auto;
-  white-space: nowrap;
 }
 
-table th, table td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+.styled-table thead tr {
+  background-color: orange;
+  color: white;
+  text-align: center;
+  font-weight: bold;
 }
 
-table th {
-  background-color: #f8f8f8;
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #e57c00;
+  color: #000000;
 }
 
 /* 我的组合部分 */
@@ -523,42 +668,22 @@ table th {
   background-color: orange;
   color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .create-portfolio-btn:hover {
   background-color: #e57c00;
 }
 
-/* 样式表更新 */
-.styled-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.styled-table thead tr {
-  background-color: orange;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-}
-
-.styled-table th, .styled-table td {
-  padding: 12px 15px;
-}
-
-.styled-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-
-.styled-table tbody tr:hover {
-  background-color: #f1f1f1;
-}
-
 /* Chart 容器 */
 .chart-container {
+  width: 100%;
+  height: 400px;
   margin-top: 30px;
 }
+
 /* Top factors section */
 .top-factors-section {
   margin-top: 40px;
@@ -566,7 +691,7 @@ table th {
 
 .top-factors-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
@@ -575,6 +700,12 @@ table th {
   padding: 20px;
   border-radius: 10px;
   text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.factor-card:hover {
+  background-color: #ff9800;
+  transform: translateY(-5px);
 }
 
 .factor-card h3 {
@@ -584,13 +715,8 @@ table th {
 .factor-card p {
   color: #ff9800;
 }
-/* Chart container */
-.chart-container {
-  width: 100%;
-  height: 400px;
-  margin-top: 30px;
-}
 
+/* Recharts Custom Styles */
 .recharts-cartesian-grid-horizontal line,
 .recharts-cartesian-grid-vertical line {
   stroke: #444;
@@ -611,7 +737,6 @@ table th {
   fill: #e57c00;
 }
 
-/* Custom for Pie and Radar chart */
 .recharts-radar {
   stroke: #ff9800;
 }
@@ -636,6 +761,7 @@ table th {
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .user-circle:hover {

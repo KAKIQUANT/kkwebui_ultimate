@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
+import LLMChat from './pages/LLMChat';
 import DataPage from './pages/data';  // 引入数据平台页面
 import StrategyPage from './pages/strategy';  // 其他页面的示例
 import FactorsPage from './pages/factors';
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         {/* 定义主页路径 */}
         <Route path="/" element={<App />} />
         {/* 数据平台页面路径 */}
+        <Route path='/llmchat' element={<LLMChat />} />
         <Route path="/data" element={<DataPage />} />
         <Route path="/strategy" element={<StrategyPage />} />
         <Route path="/factors" element={<FactorsPage />} />

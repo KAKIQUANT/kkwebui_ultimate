@@ -10,6 +10,7 @@ function Navbar() {
       </div>
       <ul>
         <li><Link to="/">首页</Link></li>
+        <li><Link to="/llmchat">AI策略设计</Link></li>
         <li><Link to="/programming">编写策略</Link></li>
         <li><Link to="/data">数据平台</Link></li>
         <li><Link to="/factors">因子研究</Link></li>
