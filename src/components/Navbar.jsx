@@ -1,11 +1,56 @@
 // components/Navbar.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Avatar, Dropdown } from 'antd';
+import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
 import '../styles/navbar.css';
 
 function Navbar() {
   const [isKnowledgeOpen, setIsKnowledgeOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
   const navigate = useNavigate();
+
+  // 检查登录状态
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const savedUserInfo = localStorage.getItem('userInfo');
+    if (token && savedUserInfo) {
+      setIsLoggedIn(true);
+      setUserInfo(JSON.parse(savedUserInfo));
+    }
+  }, []);
+
+  // 处理登出
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userInfo');
+    setIsLoggedIn(false);
+    setUserInfo(null);
+    navigate('/auth');
+  };
+
+  // 用户菜单项
+  const userMenuItems = [
+    {
+      key: 'settings',
+      label: (
+        <Link to="/settings" className="dropdown-item">
+          <SettingOutlined className="mr-2" />
+          个人设置
+        </Link>
+      ),
+    },
+    {
+      key: 'logout',
+      label: (
+        <div onClick={handleLogout} className="dropdown-item text-red-500">
+          <LogoutOutlined className="mr-2" />
+          退出登录
+        </div>
+      ),
+    },
+  ];
 
   const knowledgeLinks = [
     {
@@ -55,28 +100,41 @@ function Navbar() {
             <Link to="/strategy" className="nav-link">策略社区</Link>
             <Link to="/trading" className="nav-link">我的交易</Link>
             
-            <div 
-              className="relative group"
-              onMouseEnter={() => setIsKnowledgeOpen(true)}
-              onMouseLeave={() => setIsKnowledgeOpen(false)}
-            >
-              <button 
-                className="nav-link"
-                onClick={handleKnowledgeClick}
+            <div className="relative">
+              <div
+                className="nav-link flex items-center cursor-pointer"
+                onClick={() => setIsKnowledgeOpen(!isKnowledgeOpen)}
               >
-                知识库
-              </button>
+                <span className="mr-1">知识库</span>
+                <svg
+                  className={`h-4 w-4 transition-transform ${
+                    isKnowledgeOpen ? 'rotate-180' : ''
+                  }`}
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              
               {isKnowledgeOpen && (
                 <div className="knowledge-dropdown">
                   {knowledgeLinks.map((link, index) => (
-                    <div 
+                    <a
                       key={index}
-                      className="knowledge-link"
-                      onClick={(e) => handleLinkClick(e, link.url)}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="knowledge-item"
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      <div className="text-white font-medium">{link.title}</div>
+                      <div className="font-medium text-gray-100">{link.title}</div>
                       <div className="text-sm text-gray-400">{link.description}</div>
-                    </div>
+                    </a>
                   ))}
                 </div>
               )}
@@ -85,9 +143,28 @@ function Navbar() {
           </div>
 
           <div className="flex items-center">
-            <Link to="/login">
-              <button className="btn btn-primary">登录</button>
-            </Link>
+            {isLoggedIn && userInfo ? (
+              <Dropdown
+                menu={{ items: userMenuItems }}
+                placement="bottomRight"
+                trigger={['click']}
+                className="cursor-pointer"
+              >
+                <div className="flex items-center space-x-3 text-gray-100">
+                  <Avatar
+                    size={32}
+                    src={userInfo.avatar}
+                    icon={<UserOutlined />}
+                    className="bg-blue-500"
+                  />
+                  <span className="hidden md:block">{userInfo.username}</span>
+                </div>
+              </Dropdown>
+            ) : (
+              <Link to="/auth">
+                <button className="btn btn-primary">登录</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

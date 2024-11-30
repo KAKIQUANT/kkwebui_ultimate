@@ -3,35 +3,62 @@
 @tailwind utilities;
 
 @layer components {
-  .settings-container {
-    @apply max-w-4xl mx-auto p-6 space-y-8;
+  .settings-input {
+    @apply bg-gray-700 border-gray-600 text-gray-100 !important;
   }
 
-  .settings-section {
-    @apply bg-secondary-800 rounded-lg p-6 shadow-lg;
+  .settings-input input {
+    @apply bg-gray-700 text-gray-100 placeholder-gray-400 !important;
   }
 
-  .settings-title {
-    @apply text-2xl font-bold mb-6 text-white;
+  .settings-input .ant-input-prefix {
+    @apply text-gray-400 !important;
   }
 
-  .api-quota {
-    @apply bg-secondary-dark p-4 rounded-lg space-y-2;
+  /* Tabs 样式 */
+  .settings-tabs .ant-tabs-nav::before {
+    @apply border-gray-700 !important;
   }
 
-  .api-keys-table {
-    @apply w-full mt-4;
+  .settings-tabs .ant-tabs-tab {
+    @apply text-gray-400 !important;
   }
 
-  .api-keys-table th {
-    @apply bg-primary text-white p-2;
+  .settings-tabs .ant-tabs-tab:hover {
+    @apply text-gray-300 !important;
   }
 
-  .api-keys-table td {
-    @apply border-t border-secondary-dark p-2;
+  .settings-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    @apply text-blue-500 !important;
   }
 
-  .new-api-key {
-    @apply flex gap-4 mb-4;
+  .settings-tabs .ant-tabs-ink-bar {
+    @apply bg-blue-500 !important;
+  }
+
+  /* 表格样式 */
+  .ant-table {
+    @apply bg-transparent !important;
+  }
+
+  .ant-table-thead > tr > th {
+    @apply bg-gray-700 text-gray-300 border-gray-600 !important;
+  }
+
+  .ant-table-tbody > tr > td {
+    @apply border-gray-700 !important;
+  }
+
+  .ant-table-tbody > tr:hover > td {
+    @apply bg-gray-750 !important;
+  }
+
+  /* 按钮样式 */
+  .ant-btn-dangerous {
+    @apply bg-red-600 text-white border-red-600 !important;
+  }
+
+  .ant-btn-dangerous:hover {
+    @apply bg-red-700 border-red-700 !important;
   }
 } 

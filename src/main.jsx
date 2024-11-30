@@ -7,13 +7,14 @@ import DataPage from './pages/data';  // 引入数据平台页面
 import StrategyPage from './pages/strategy';  // 其他页面的示例
 import FactorsPage from './pages/factors';
 import ProgrammingPage from './pages/programming';
-import Login from './pages/Login';
 import Register from './pages/register';
 import Trading from './pages/trading';
 import Settings from './pages/Settings';
 import About from './pages/About';
 import Knowledge from './pages/Knowledge';
+import Auth from './pages/Auth';  
 import './styles/main.css';
+import './styles/pages/settings.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -26,7 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/strategy" element={<StrategyPage />} />
         <Route path="/factors" element={<FactorsPage />} />
         <Route path="/programming" element={<ProgrammingPage />} />
-        <Route path="/Login" element={<Login />} />
+        <Route path="/auth" element={<Auth />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/trading" element={<Trading />} />
         <Route path="/settings" element={<Settings />} />

@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* 覆盖 Ant Design 的默认样式 */
+  .auth-input {
+    @apply bg-gray-700 border-gray-600 text-gray-100 !important;
+  }
+
+  .auth-input input {
+    @apply bg-gray-700 text-gray-100 placeholder-gray-400 !important;
+  }
+
+  .auth-input .ant-input-prefix {
+    @apply text-gray-400 !important;
+  }
+
+  /* 密码输入框特殊样式 */
+  .auth-input.ant-input-password {
+    @apply bg-gray-700 border-gray-600 !important;
+  }
+
+  .auth-input.ant-input-password .ant-input {
+    @apply bg-gray-700 text-gray-100 placeholder-gray-400 !important;
+  }
+
+  .auth-input.ant-input-password .anticon {
+    @apply text-gray-400 !important;
+  }
+
+  /* Checkbox 样式 */
+  .ant-checkbox-wrapper {
+    @apply text-gray-300 !important;
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    @apply bg-blue-600 border-blue-600 !important;
+  }
+
+  .ant-checkbox:hover .ant-checkbox-inner {
+    @apply border-blue-500 !important;
+  }
+
+  /* 按钮悬停效果 */
+  .ant-btn-primary:hover {
+    @apply bg-blue-700 !important;
+  }
+
+  /* 输入框焦点状态 */
+  .auth-input:focus,
+  .auth-input:hover,
+  .auth-input.ant-input-focused {
+    @apply border-blue-500 !important;
+  }
+} 

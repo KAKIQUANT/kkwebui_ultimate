@@ -1,87 +1,179 @@
 import React from 'react';
-import Navbar from '../components/Navbar'; // 导航栏
-import Footer from '../components/Footer'; // 页脚
-import '../styles/pages/about.css'; // 引入全局样式
-import { FaExclamationCircle, FaShieldAlt, FaInfoCircle } from 'react-icons/fa'; // 引入图标
+import Navbar from '../components/Navbar';
+import { GithubOutlined, GlobalOutlined, MailOutlined, WarningOutlined, SafetyCertificateOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 
 const About = () => {
+  const features = [
+    {
+      title: "量化交易平台",
+      description: "提供完整的量化交易解决方案，从策略开发到实盘交易一站式服务"
+    },
+    {
+      title: "AI 策略助手",
+      description: "运用先进的人工智能技术，辅助策略设计和优化"
+    },
+    {
+      title: "数据服务",
+      description: "覆盖股票、期货等多个市场的高质量金融数据"
+    },
+    {
+      title: "因子研究",
+      description: "强大的因子研究工具，支持自定义因子开发和回测"
+    }
+  ];
+
+  const contacts = [
+    {
+      icon: <GithubOutlined />,
+      title: "GitHub",
+      link: "https://github.com/kakiquant",
+      description: "查看我们的开源项目"
+    },
+    {
+      icon: <GlobalOutlined />,
+      title: "官方网站",
+      link: "https://www.kakiquant.com",
+      description: "了解更多产品信息"
+    },
+    {
+      icon: <MailOutlined />,
+      title: "联系我们",
+      link: "mailto:contact@kakiquant.com",
+      description: "发送邮件咨询"
+    }
+  ];
+
+  const disclaimers = [
+    {
+      icon: <WarningOutlined className="text-red-500" />,
+      title: "投资风险警示",
+      content: "金融市场投资具有高风险，您的投资本金可能会受到损失。在进行任何投资决策之前，请充分了解产品特性和风险，并根据自身的风险承受能力谨慎决策。",
+      color: "border-red-500"
+    },
+    {
+      icon: <ExclamationCircleOutlined className="text-yellow-500" />,
+      title: "历史业绩说明",
+      content: "历史业绩不代表未来表现。任何策略在过去的成功都不能保证未来会获得相似的收益。市场环境瞬息万变，投资者需要持续关注市场变化。",
+      color: "border-yellow-500"
+    },
+    {
+      icon: <SafetyCertificateOutlined className="text-blue-500" />,
+      title: "非投资建议声明",
+      content: "本平台提供的所有信息仅供参考，不构成任何投资建议或推荐。投资者应当独立判断和决策，并自行承担投资风险。",
+      color: "border-blue-500"
+    }
+  ];
+
   return (
-    <>
+    <div className="min-h-screen bg-gray-900">
       <Navbar />
-      {/* Hero Section */}
-      <div className="hero bg-gradient-to-r from-blue-600 to-purple-500 py-16 text-center text-white">
-        <h1 className="text-5xl font-bold mb-4">About Our Quantitative Trading Platform</h1>
-        <p className="text-xl max-w-2xl mx-auto leading-relaxed">
-          We strive to provide cutting-edge quantitative trading solutions to our clients. Our platform leverages advanced algorithms and data analysis to identify trading opportunities.
-        </p>
-      </div>
-
-      {/* Main Content Section */}
-      <div className="max-w-5xl mx-auto p-8 mt-12 bg-white rounded-lg shadow-md">
-        {/* Mission Section */}
-        <section className="mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-primary">Our Mission</h2>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            We strive to provide cutting-edge quantitative trading solutions to our clients. Our platform leverages advanced algorithms and data analysis to identify trading opportunities.
-          </p>
-        </section>
-
-        {/* Legal Disclaimers Section */}
-        <section>
-          <h2 className="text-4xl font-bold mb-6 text-primary">Legal Disclaimers</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Disclaimer Cards */}
-            {[
-              {
-                icon: <FaExclamationCircle className="text-3xl text-red-500" />,
-                title: "Risk Warning",
-                content:
-                  "Trading in financial instruments carries a high level of risk to your capital with the possibility of losing more than your initial investment. You should not engage in trading unless you fully understand the nature of the transactions you are entering into and the extent of your exposure to loss.",
-              },
-              {
-                icon: <FaInfoCircle className="text-3xl text-yellow-500" />,
-                title: "No Guarantee of Profits",
-                content:
-                  "Past performance is not indicative of future results. No representation is being made that any account will or is likely to achieve profits or losses similar to those discussed on this platform.",
-              },
-              {
-                icon: <FaShieldAlt className="text-3xl text-green-500" />,
-                title: "Not Financial Advice",
-                content:
-                  "The information provided on this platform is for general informational purposes only and should not be considered as investment advice. Always seek the advice of a qualified financial advisor before making any investment decisions.",
-              },
-              {
-                icon: <FaInfoCircle className="text-3xl text-blue-500" />,
-                title: "Accuracy of Information",
-                content:
-                  "While we strive to provide accurate and up-to-date information, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to the platform or the information contained on the platform for any purpose.",
-              },
-              {
-                icon: <FaShieldAlt className="text-3xl text-purple-500" />,
-                title: "Regulatory Compliance",
-                content:
-                  "Our platform adheres to all applicable financial regulations. Users are responsible for ensuring their use of our platform complies with local laws and regulations in their jurisdiction.",
-              },
-            ].map((disclaimer, index) => (
-              <div key={index} className="bg-gray-100 p-6 rounded-lg shadow-lg">
-                <div className="flex items-center mb-4">
-                  {disclaimer.icon}
-                  <h3 className="ml-4 text-2xl font-semibold">{disclaimer.title}</h3>
-                </div>
-                <p className="text-gray-700 leading-relaxed">{disclaimer.content}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Acknowledgment */}
-        <p className="text-center text-gray-600 mt-12">
-          By using our platform, you acknowledge that you have read, understood, and agree to these disclaimers and the terms of service.
-        </p>
-      </div>
       
-      <Footer />
-    </>
+      <main className="pt-16 pb-8">
+        <div className="max-w-6xl mx-auto px-4">
+          {/* 介绍部分 */}
+          <section className="text-center mb-16">
+            <h1 className="text-4xl font-bold text-gray-100 mb-4">
+              关于 KakiQuant
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              KakiQuant 是一个专注于量化交易的综合性平台，致力于为量化交易者提供专业的工具和服务。
+              我们运用先进的技术，帮助交易者构建、测试和部署交易策略。
+            </p>
+          </section>
+
+          {/* 风险提示部分 */}
+          <section className="mb-16">
+            <h2 className="text-2xl font-semibold text-gray-100 mb-8 text-center flex items-center justify-center">
+              <WarningOutlined className="text-red-500 mr-2" />
+              风险提示
+            </h2>
+            <div className="space-y-6">
+              {disclaimers.map((disclaimer, index) => (
+                <div 
+                  key={index}
+                  className={`bg-gray-800 rounded-lg p-6 border-l-4 ${disclaimer.color} transform hover:-translate-y-1 transition-all duration-300`}
+                >
+                  <div className="flex items-start">
+                    <div className="text-2xl mr-4 mt-1">
+                      {disclaimer.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-medium text-gray-100 mb-2">
+                        {disclaimer.title}
+                      </h3>
+                      <p className="text-gray-400 leading-relaxed">
+                        {disclaimer.content}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* 补充免责声明 */}
+            <div className="mt-8 bg-gray-800 rounded-lg p-6">
+              <p className="text-gray-400 text-sm leading-relaxed">
+                免责声明：使用 KakiQuant 平台即表示您已充分了解并接受以下条款：
+                <br />1. 量化交易涉及金融市场交易，具有高风险性，可能导致本金重大损失；
+                <br />2. 平台提供的所有工具、数据和策略仅供参考，不构成任何投资建议；
+                <br />3. 用户应当具备必要的金融、编程知识，并对自己的交易决策负责；
+                <br />4. 平台不对用户的投资损益承担责任，请在充分评估风险后谨慎决策。
+              </p>
+            </div>
+          </section>
+
+          {/* 特性部分 */}
+          <section className="mb-16">
+            <h2 className="text-2xl font-semibold text-gray-100 mb-8 text-center">
+              核心功能
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {features.map((feature, index) => (
+                <div 
+                  key={index}
+                  className="bg-gray-800 rounded-lg p-6 hover:bg-gray-750 transition-colors"
+                >
+                  <h3 className="text-xl font-medium text-gray-100 mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-400">
+                    {feature.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 联系方式 */}
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-100 mb-8 text-center">
+              联系我们
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {contacts.map((contact, index) => (
+                <a
+                  key={index}
+                  href={contact.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-800 rounded-lg p-6 hover:bg-gray-750 transition-colors group"
+                >
+                  <div className="text-3xl text-blue-500 mb-4">
+                    {contact.icon}
+                  </div>
+                  <h3 className="text-xl font-medium text-gray-100 mb-2 group-hover:text-blue-400 transition-colors">
+                    {contact.title}
+                  </h3>
+                  <p className="text-gray-400">
+                    {contact.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
   );
 };
 

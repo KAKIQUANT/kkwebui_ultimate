@@ -3,51 +3,122 @@
 @tailwind utilities;
 
 @layer components {
-  .llm-chat-page {
-    @apply flex flex-col min-h-screen bg-secondary-dark text-white;
+  .page-container {
+    @apply min-h-screen flex flex-col bg-gray-50;
   }
 
-  .chat-container {
-    @apply flex-1 flex flex-col bg-secondary-800 rounded-lg p-5 shadow-lg;
+  .main-content {
+    @apply flex-1 w-full pt-16 pb-16; /* 为导航栏和页脚留出空间 */
   }
 
-  .chat-window {
+  .chat-wrapper {
+    @apply max-w-4xl mx-auto h-[calc(100vh-8rem)] flex flex-col bg-white rounded-lg shadow-sm my-4;
+  }
+
+  .chat-header {
+    @apply p-4 border-b;
+  }
+
+  .chat-header h1 {
+    @apply text-xl font-medium text-gray-800 text-center;
+  }
+
+  .messages-area {
     @apply flex-1 overflow-y-auto p-4 space-y-4;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E0 #EDF2F7;
   }
 
-  .chat-message {
-    @apply flex flex-col;
+  .messages-area::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  .messages-area::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+
+  .messages-area::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full hover:bg-gray-400;
+  }
+
+  .message {
+    @apply flex w-full;
   }
 
   .user-message {
-    @apply items-end;
+    @apply justify-end;
   }
 
-  .llm-message {
-    @apply items-start;
+  .message-bubble {
+    @apply max-w-[80%] px-4 py-2 rounded-2xl;
   }
 
-  .message-text {
-    @apply max-w-[70%] p-3 rounded-lg;
+  .user-message .message-bubble {
+    @apply bg-blue-500 text-white;
   }
 
-  .user-message .message-text {
-    @apply bg-primary text-white;
+  .assistant-message .message-bubble {
+    @apply bg-gray-100 text-gray-800;
   }
 
-  .llm-message .message-text {
-    @apply bg-secondary-800 text-white;
+  .message-time {
+    @apply block text-xs opacity-75 mt-1;
   }
 
-  .chat-input-area {
-    @apply flex gap-4 mt-4;
+  .input-area {
+    @apply p-4 border-t flex gap-2 items-end;
   }
 
-  .chat-input {
-    @apply flex-1 p-3 rounded-lg bg-secondary-800 text-white resize-none focus:ring-2 focus:ring-primary focus:outline-none;
+  .input-area .ant-input-textarea {
+    @apply flex-1;
   }
 
-  .send-button {
-    @apply px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors duration-200;
+  .input-area .ant-btn {
+    @apply flex-none;
   }
+
+  .typing-dots {
+    @apply flex gap-1;
+  }
+
+  .typing-dots span {
+    @apply w-2 h-2 bg-gray-400 rounded-full;
+    animation: bounce 1.4s infinite ease-in-out both;
+  }
+
+  .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+  .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+  @keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+  }
+}
+
+@layer utilities {
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #4B5563 #1F2937;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    @apply bg-gray-800 rounded-full;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded-full hover:bg-gray-500 transition-colors;
+  }
+}
+
+/* 覆盖 Ant Design 的默认样式 */
+.ant-input-textarea textarea {
+  @apply bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 hover:border-blue-400;
+}
+
+.ant-btn-primary[disabled] {
+  @apply bg-gray-600 border-gray-600 opacity-50;
 } 

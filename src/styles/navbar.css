@@ -4,7 +4,8 @@
 
 @layer components {
   .navbar {
-    @apply bg-secondary-dark shadow-lg;
+    @apply fixed top-0 left-0 right-0 bg-gray-900 shadow-lg z-40;
+    height: 64px; /* 固定导航栏高度 */
   }
 
   .navbar-container {
@@ -16,7 +17,7 @@
   }
 
   .nav-brand {
-    @apply flex items-center text-xl font-bold text-white;
+    @apply flex items-center text-xl font-bold text-gray-100;
   }
 
   .nav-links {
@@ -24,33 +25,72 @@
   }
 
   .nav-link {
-    @apply text-white hover:text-primary transition-colors duration-200;
+    @apply text-gray-100 hover:text-blue-400 transition-colors duration-200;
   }
 
   .dropdown {
-    @apply relative group;
+    @apply hidden;
   }
 
   .dropdown-content {
-    @apply absolute hidden group-hover:block w-48 right-0 mt-2 py-2 bg-secondary-800 rounded-lg shadow-xl;
+    @apply hidden;
   }
 
   .dropdown-item {
-    @apply block px-4 py-2 text-white hover:bg-primary;
+    @apply hidden;
   }
 
   .knowledge-dropdown {
-    @apply absolute right-0 mt-2 w-64 bg-secondary-800 rounded-lg shadow-xl 
+    @apply absolute right-0 mt-2 w-64 bg-gray-800 rounded-lg shadow-xl 
            py-2 z-50 transform transition-all duration-200;
+    min-width: 250px;
   }
 
   .knowledge-link {
-    @apply block px-4 py-3 hover:bg-secondary-700 transition-colors duration-200;
+    @apply hidden;
+  }
+
+  .knowledge-item {
+    @apply block px-4 py-3 hover:bg-gray-700 transition-colors duration-200;
   }
 
   .btn-primary {
-    @apply px-4 py-2 bg-primary text-white rounded-lg 
-           hover:bg-primary-hover transition-colors duration-200;
+    @apply px-4 py-2 bg-blue-600 text-white rounded-lg 
+           hover:bg-blue-700 transition-colors duration-200;
+  }
+
+  /* 确保下拉菜单有足够的 z-index */
+  .navbar .relative {
+    @apply z-50;
+  }
+
+  /* 下拉菜单样式 */
+  .navbar .absolute {
+    @apply z-50 bg-white shadow-lg rounded-md;
+    min-width: 160px;
+  }
+
+  /* 下拉菜单项样式 */
+  .navbar .absolute a {
+    @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150;
+  }
+
+  /* 用户下拉菜单样式 */
+  .dropdown-item {
+    @apply flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full;
+  }
+
+  .ant-dropdown-menu {
+    @apply bg-white rounded-lg shadow-lg border border-gray-200;
+  }
+
+  .ant-avatar {
+    @apply cursor-pointer transition-transform hover:scale-105;
+  }
+
+  /* 用户名称样式 */
+  .ant-dropdown-trigger {
+    @apply hover:text-blue-400 transition-colors duration-200;
   }
 } 
 
