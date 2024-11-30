@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .navbar {
+    @apply bg-secondary-dark shadow-lg;
+  }
+
+  .navbar-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .navbar-content {
+    @apply flex justify-between h-16;
+  }
+
+  .nav-brand {
+    @apply flex items-center text-xl font-bold text-white;
+  }
+
+  .nav-links {
+    @apply hidden md:flex items-center space-x-4;
+  }
+
+  .nav-link {
+    @apply text-white hover:text-primary transition-colors duration-200;
+  }
+
+  .dropdown {
+    @apply relative group;
+  }
+
+  .dropdown-content {
+    @apply absolute hidden group-hover:block w-48 right-0 mt-2 py-2 bg-secondary-800 rounded-lg shadow-xl;
+  }
+
+  .dropdown-item {
+    @apply block px-4 py-2 text-white hover:bg-primary;
+  }
+
+  .knowledge-dropdown {
+    @apply absolute right-0 mt-2 w-64 bg-secondary-800 rounded-lg shadow-xl 
+           py-2 z-50 transform transition-all duration-200;
+  }
+
+  .knowledge-link {
+    @apply block px-4 py-3 hover:bg-secondary-700 transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 bg-primary text-white rounded-lg 
+           hover:bg-primary-hover transition-colors duration-200;
+  }
+} 
+
+/* navbar.css */
+.relative {
+    position: relative;
+  }
+  
+  .knowledge-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #1a202c; /* Adjust as needed */
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 50;
+    /* Ensure there's no gap between the button and the dropdown */
+  }
+  
+  .knowledge-link {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .knowledge-link:hover {
+    background-color: #2d3748; /* Adjust as needed */
+  }
+  
+  .nav-link {
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+  }
+  
+  .nav-link:hover {
+    background-color: #2d3748; /* Adjust as needed */
+    border-radius: 4px;
+  }
+  

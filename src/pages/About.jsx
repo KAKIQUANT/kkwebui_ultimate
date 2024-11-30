@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar'; // 导航栏
 import Footer from '../components/Footer'; // 页脚
-import './About.css'; // 引入全局样式
+import '../styles/pages/about.css'; // 引入全局样式
 import { FaExclamationCircle, FaShieldAlt, FaInfoCircle } from 'react-icons/fa'; // 引入图标
 
 const About = () => {

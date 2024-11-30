@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .about-hero {
+    @apply bg-gradient-to-r from-blue-600 to-purple-500 py-16 text-center text-white;
+  }
+
+  .about-content {
+    @apply max-w-5xl mx-auto p-8 mt-12 bg-white rounded-lg shadow-md;
+  }
+
+  .disclaimer-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+  }
+
+  .disclaimer-card {
+    @apply bg-gray-100 p-6 rounded-lg shadow-lg hover:transform hover:-translate-y-1 transition-all duration-200;
+  }
+
+  .disclaimer-header {
+    @apply flex items-center mb-4;
+  }
+
+  .disclaimer-icon {
+    @apply text-3xl;
+  }
+
+  .disclaimer-title {
+    @apply ml-4 text-2xl font-semibold text-gray-900;
+  }
+
+  .disclaimer-text {
+    @apply text-gray-700 leading-relaxed;
+  }
+} 

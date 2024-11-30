@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate for redire
 import Navbar from '../components/Navbar'; // 导航栏
 import Footer from '../components/Footer'; // 页脚
 import '../index.css'; // 引入全局样式
-import './Login.css'; // Import the new login styles
+import '../styles/pages/login.css'; // Import the new login styles
 
 const Login = () => {
   const [username, setUsername] = useState(''); // Username input

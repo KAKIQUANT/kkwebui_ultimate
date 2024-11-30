@@ -1,64 +1,77 @@
 // pages/programming.jsx
-import React, { useState } from 'react';
-import Iframe from 'react-iframe';
-import MonacoEditor from 'react-monaco-editor';
-import { Button } from 'antd';
-import 'antd/dist/reset.css';
-import Navbar from '../components/Navbar';  // 引入导航栏
-import '../index.css';  // 引入全局样式
+import React from 'react';
+import { Card, Button } from 'antd';
+import { ExperimentOutlined } from '@ant-design/icons';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import '../styles/pages/programming.css';
 
 const ProgrammingPage = () => {
-  const [code, setCode] = useState(`# Write your Python code here\nprint("Hello, world!")`);
+  const jupyterLabUrl = "https://lab.kakiquant.icu/lab?token=kakiquant";
+  
+  const strategies = [
+    {
+      title: "动量策略",
+      description: "基于价格动量的交易策略，利用历史价格趋势进行交易决策。",
+      notebook: "1.ipynb"
+    },
+    {
+      title: "均值回归策略",
+      description: "基于价格回归均值的特性进行交易，适合震荡市场。",
+      notebook: "2.ipynb"
+    },
+    {
+      title: "日内交易策略",
+      description: "针对日内价格波动特征设计的短期交易策略。",
+      notebook: "3.ipynb"
+    },
+    {
+      title: "多因子策略",
+      description: "结合多个因子的综合交易策略，提高策略的稳定性。",
+      notebook: "4.ipynb"
+    }
+  ];
 
-  const editorDidMount = (editor, monaco) => {
-    console.log('Editor mounted!', editor);
-  };
-
-  const handleRunCode = () => {
-    // 运行代码的逻辑可以通过连接后端的 Jupyter API 来实现
-    console.log("Running code:", code);
+  const openNotebook = (notebook) => {
+    window.open(`${jupyterLabUrl}/tree/${notebook}`, '_blank');
   };
 
   return (
     <div className="programming-page">
       <Navbar />
-      <h1>在线编程与 Jupyter Notebook</h1>
-
-      {/* Jupyter Notebook Viewer */}
-      <div className="notebook-section">
-        <Iframe
-          url="https://nbviewer.jupyter.org/urls/jupyter.org/assets/jupytervideo.ipynb"
-          width="100%"
-          height="600px"
-          className="jupyter-iframe"
-          display="initial"
-          position="relative"
-        />
+      <div className="programming-content">
+        <div className="lab-access">
+          <Button 
+            type="primary" 
+            size="large"
+            icon={<ExperimentOutlined />}
+            onClick={() => window.open(jupyterLabUrl, '_blank')}
+          >
+            打开 JupyterLab
+          </Button>
+        </div>
+        
+        <div className="strategies-grid">
+          {strategies.map((strategy, index) => (
+            <Card
+              key={index}
+              className="strategy-card"
+              title={strategy.title}
+              extra={
+                <Button 
+                  type="link" 
+                  onClick={() => openNotebook(strategy.notebook)}
+                >
+                  打开策略
+                </Button>
+              }
+            >
+              <p>{strategy.description}</p>
+            </Card>
+          ))}
+        </div>
       </div>
-
-      {/* 实时代码编辑器 (Monaco Editor) */}
-      <div className="code-editor-section">
-        <MonacoEditor
-          width="100%"
-          height="400px"
-          language="python"
-          theme="vs-dark"
-          value={code}
-          options={{
-            selectOnLineNumbers: true
-          }}
-          onChange={(newValue) => setCode(newValue)}
-          editorDidMount={editorDidMount}
-        />
-        <Button type="primary" onClick={handleRunCode} style={{ marginTop: 10 }}>
-          运行代码
-        </Button>
-      </div>
-
-      {/* 动态背景科技效果 */}
-      <div className="background-effect">
-        {/* 这里可以嵌入 Three.js 或其他视觉效果 */}
-      </div>
+      <Footer />
     </div>
   );
 };

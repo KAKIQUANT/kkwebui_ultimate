@@ -6,7 +6,7 @@ import {
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, CartesianGrid, XAxis, YAxis, Tooltip as ChartTooltip, Legend, ResponsiveContainer, Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ComposedChart, Area, ScatterChart, Scatter, ZAxis
 } from 'recharts';
 import Navbar from '../components/Navbar';  // 引入导航栏组件
-import '../style/factor.css'; // 引入因子页面样式
+import '../styles/factor.css'; // 引入因子页面样式
 
 // 假数据 for charts and heatmap
 const chartData = [

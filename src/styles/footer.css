@@ -1,0 +1,93 @@
+/* Footer styles using Tailwind CSS classes */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .footer {
+    @apply bg-secondary-dark text-white mt-auto;
+  }
+
+  .footer-container {
+    @apply max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8;
+  }
+
+  .footer-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+  }
+
+  .footer-section {
+    @apply space-y-4;
+  }
+
+  .footer-heading {
+    @apply text-lg font-semibold mb-4;
+  }
+
+  .footer-list {
+    @apply space-y-2;
+  }
+
+  .footer-link {
+    @apply text-gray-300 hover:text-primary transition-colors duration-200 flex items-center;
+  }
+
+  .qr-grid {
+    @apply grid grid-cols-2 gap-4;
+  }
+
+  .qr-item {
+    @apply text-center;
+  }
+
+  .qr-item img {
+    @apply w-24 h-24 mx-auto mb-2;
+  }
+
+  .footer-bottom {
+    @apply mt-8 pt-8 border-t border-gray-700 text-center text-gray-400;
+  }
+
+  .newsletter-form {
+    @apply w-full max-w-md;
+  }
+
+  .newsletter-input {
+    @apply w-full px-4 py-2 bg-secondary-800 border border-gray-700 rounded-lg 
+           text-white placeholder-gray-400 
+           focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
+           transition-all duration-200;
+  }
+
+  .newsletter-button {
+    @apply w-full px-4 py-2 bg-primary text-white rounded-lg
+           hover:bg-primary-hover transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary-dark;
+  }
+
+  .social-grid {
+    @apply grid grid-cols-2 gap-4;
+  }
+
+  .social-column {
+    @apply space-y-2;
+  }
+
+  .contact-info {
+    @apply space-y-4;
+  }
+
+  .qr-section {
+    @apply text-center mb-4;
+  }
+
+  .qr-image {
+    @apply w-24 h-24 mx-auto mb-2;
+  }
+
+  .email-section {
+    @apply space-y-1;
+  }
+}
+  
+  

@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .settings-container {
+    @apply max-w-4xl mx-auto p-6 space-y-8;
+  }
+
+  .settings-section {
+    @apply bg-secondary-800 rounded-lg p-6 shadow-lg;
+  }
+
+  .settings-title {
+    @apply text-2xl font-bold mb-6 text-white;
+  }
+
+  .api-quota {
+    @apply bg-secondary-dark p-4 rounded-lg space-y-2;
+  }
+
+  .api-keys-table {
+    @apply w-full mt-4;
+  }
+
+  .api-keys-table th {
+    @apply bg-primary text-white p-2;
+  }
+
+  .api-keys-table td {
+    @apply border-t border-secondary-dark p-2;
+  }
+
+  .new-api-key {
+    @apply flex gap-4 mb-4;
+  }
+} 

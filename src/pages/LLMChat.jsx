@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar'; // If Navbar is to be included here; else, handled in App.jsx
 import Footer from '../components/Footer'; // If Footer is to be included here; else, handled in App.jsx
-import './LLMChat.css'; // Import component-specific styles
+import '../styles/pages/llmchat.css'; // Import component-specific styles
 
 const LLMChat = () => {
   const [currentChatId, setCurrentChatId] = useState(null);

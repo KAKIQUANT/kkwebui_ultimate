@@ -12,6 +12,8 @@ import Register from './pages/register';
 import Trading from './pages/trading';
 import Settings from './pages/Settings';
 import About from './pages/About';
+import Knowledge from './pages/Knowledge';
+import './styles/main.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -29,6 +31,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/trading" element={<Trading />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/about" element={<About />} />
+        <Route path="/knowledge" element={<Knowledge />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
