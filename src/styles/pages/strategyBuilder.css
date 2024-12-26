@@ -1,0 +1,91 @@
+.strategy-builder {
+  @apply flex flex-col h-screen bg-secondary-dark text-white;
+}
+
+.strategy-toolbar {
+  @apply flex justify-between items-center p-4 bg-secondary-800;
+}
+
+.toolbar-buttons {
+  @apply flex gap-4;
+}
+
+.toolbar-buttons button {
+  @apply px-4 py-2 bg-primary hover:bg-primary-hover rounded-lg transition-colors;
+}
+
+.strategy-canvas {
+  @apply flex-grow bg-secondary-900;
+}
+
+/* Node Styles */
+.strategy-node {
+  @apply p-4 rounded-lg shadow-lg min-w-[250px] border-2;
+}
+
+.strategy-node h3 {
+  @apply text-lg font-semibold mb-3 text-center;
+}
+
+.node-params {
+  @apply flex flex-col gap-2 mt-3;
+}
+
+.node-params label {
+  @apply flex flex-col text-sm;
+}
+
+.node-params input,
+.node-params select {
+  @apply mt-1 px-2 py-1 rounded bg-secondary-700 border border-secondary-600;
+}
+
+/* Node Type Specific Styles */
+.datasource-node {
+  @apply border-blue-500 bg-blue-900/50;
+}
+
+.indicator-node {
+  @apply border-green-500 bg-green-900/50;
+}
+
+.signal-node {
+  @apply border-yellow-500 bg-yellow-900/50;
+}
+
+.position-node {
+  @apply border-purple-500 bg-purple-900/50;
+}
+
+.backtest-node {
+  @apply border-red-500 bg-red-900/50;
+}
+
+/* Flow Controls */
+.react-flow__controls {
+  @apply bg-secondary-800 border-secondary-700;
+}
+
+.react-flow__controls button {
+  @apply bg-secondary-700 border-secondary-600 text-white hover:bg-secondary-600;
+}
+
+/* Mini Map */
+.react-flow__minimap {
+  @apply bg-secondary-800;
+}
+
+/* Background */
+.react-flow__background {
+  @apply bg-secondary-900;
+}
+
+/* Edge Styles */
+.react-flow__edge-path {
+  @apply stroke-2 stroke-primary;
+}
+
+/* Node Handle Styles */
+.react-flow__handle {
+  @apply w-3 h-3 bg-primary border-2 border-white;
+} 

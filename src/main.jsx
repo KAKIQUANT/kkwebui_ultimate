@@ -5,6 +5,7 @@ import App from './App';
 import LLMChat from './pages/LLMChat';
 import DataPage from './pages/data';  // 引入数据平台页面
 import StrategyPage from './pages/strategy';  // 其他页面的示例
+import StrategyBuilder from './pages/StrategyBuilder';
 import FactorsPage from './pages/factors';
 import ProgrammingPage from './pages/programming';
 import Register from './pages/register';
@@ -15,6 +16,7 @@ import Knowledge from './pages/Knowledge';
 import Auth from './pages/Auth';  
 import './styles/main.css';
 import './styles/pages/settings.css';
+import './styles/pages/strategyBuilder.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -25,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/llmchat' element={<LLMChat />} />
         <Route path="/data" element={<DataPage />} />
         <Route path="/strategy" element={<StrategyPage />} />
+        <Route path="/strategy/builder" element={<StrategyBuilder />} />
         <Route path="/factors" element={<FactorsPage />} />
         <Route path="/programming" element={<ProgrammingPage />} />
         <Route path="/auth" element={<Auth />} />
