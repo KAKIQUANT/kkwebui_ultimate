@@ -2,82 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom base styles */
-@layer base {
-  body {
-    @apply bg-secondary-dark text-white;
-  }
-
-  h1 {
-    @apply text-4xl font-bold mb-6;
-  }
-
-  h2 {
-    @apply text-2xl font-semibold mb-4;
-  }
+:root {
+  --background-color: #f0f2f5;
+  --text-color: #1f2937;
+  --card-background: #ffffff;
+  --border-color: #e5e7eb;
+  --hover-color: #f9fafb;
+  --navbar-height: 64px;
 }
 
-/* Custom components */
-@layer components {
-  .btn {
-    @apply px-4 py-2 rounded-lg transition-colors duration-200;
-  }
-
-  .btn-primary {
-    @apply bg-primary text-white hover:bg-primary-hover;
-  }
-
-  .nav-link {
-    @apply text-white hover:text-primary transition-colors duration-200;
-  }
-
-  .card {
-    @apply bg-secondary-800 rounded-lg p-6 shadow-lg;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-/* Custom utilities */
-@layer utilities {
-  .bg-gradient-primary {
-    @apply bg-gradient-to-r from-primary to-accent;
-  }
+/* Layout 样式 */
+.ant-layout {
+  background: var(--background-color);
 }
 
-/* Keep your existing custom styles that aren't covered by Tailwind */
-.background-effect {
+/* 导航栏样式 */
+.ant-layout-header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(135deg, #2e2e2e 25%, transparent 25%) -50px 0,
-              linear-gradient(225deg, #2e2e2e 25%, transparent 25%) -50px 0,
-              linear-gradient(315deg, #2e2e2e 25%, transparent 25%),
-              linear-gradient(45deg, #2e2e2e 25%, transparent 25%);
-  background-size: 100px 100px;
-  opacity: 0.1;
+  right: 0;
+  z-index: 1000;
+  height: var(--navbar-height);
+  line-height: var(--navbar-height);
+  background: var(--card-background);
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* .programming-page {
-  padding: 20px;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+/* 内容区域样式 */
+.ant-layout-content {
+  padding: 24px;
+  margin-top: var(--navbar-height);
 }
 
-.notebook-section {
-  margin-top: 20px;
-  background: white;
+/* 卡片样式 */
+.ant-card {
+  background: var(--card-background);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
 }
 
-.jupyter-iframe {
-  border: none;
+.ant-card-bordered {
+  border: 1px solid var(--border-color);
 }
 
-h1 {
-  margin-bottom: 20px;
+/* 统计数值样式 */
+.ant-statistic-title {
+  color: #666;
+  font-size: 14px;
+}
+
+.ant-statistic-content {
   color: #333;
-} */
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* 布局容器 */
+.content-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .ant-layout-content {
+    padding: 16px;
+  }
+  
+  .ant-card {
+    margin-bottom: 16px;
+  }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}

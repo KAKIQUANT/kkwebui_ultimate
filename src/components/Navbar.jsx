@@ -1,175 +1,177 @@
-// components/Navbar.jsx
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Avatar, Dropdown } from 'antd';
-import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
-import '../styles/navbar.css';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Button, Dropdown, Menu } from 'antd';
+import {
+  UserOutlined,
+  SettingOutlined,
+  LogoutOutlined,
+  RobotOutlined,
+  ExperimentOutlined,
+  TeamOutlined,
+  LineChartOutlined,
+  DatabaseOutlined,
+  BookOutlined,
+  CodeOutlined,
+  ThunderboltOutlined,
+  MessageOutlined,
+  QuestionCircleOutlined,
+} from '@ant-design/icons';
 
-function Navbar() {
-  const [isKnowledgeOpen, setIsKnowledgeOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userInfo, setUserInfo] = useState(null);
-  const navigate = useNavigate();
+const Navbar = () => {
+  const location = useLocation();
 
-  // 检查登录状态
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const savedUserInfo = localStorage.getItem('userInfo');
-    if (token && savedUserInfo) {
-      setIsLoggedIn(true);
-      setUserInfo(JSON.parse(savedUserInfo));
+  const navigation = [
+    {
+      name: 'AI策略',
+      path: '/strategy/ai',
+      icon: <RobotOutlined />,
+      current: location.pathname.startsWith('/strategy'),
+      children: [
+        {
+          name: 'AI策略库',
+          path: '/strategy/ai',
+          icon: <RobotOutlined />,
+        },
+        {
+          name: '编写策略',
+          path: '/strategy/programming',
+          icon: <CodeOutlined />,
+        },
+        {
+          name: '创建AI策略',
+          path: '/strategy/builder',
+          icon: <ThunderboltOutlined />,
+        },
+        {
+          name: 'AI助手',
+          path: '/strategy/llm-chat',
+          icon: <MessageOutlined />,
+        }
+      ]
+    },
+    {
+      name: '因子研究',
+      path: '/factors/research',
+      icon: <ExperimentOutlined />,
+      current: location.pathname.startsWith('/factors')
+    },
+    {
+      name: '策略社区',
+      path: '/strategy/community',
+      icon: <TeamOutlined />,
+      current: location.pathname === '/strategy/community'
+    },
+    {
+      name: '数据平台',
+      path: '/data',
+      icon: <DatabaseOutlined />,
+      current: location.pathname === '/data'
+    },
+    {
+      name: '我的交易',
+      path: '/trading/my',
+      icon: <LineChartOutlined />,
+      current: location.pathname.startsWith('/trading')
     }
-  }, []);
-
-  // 处理登出
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userInfo');
-    setIsLoggedIn(false);
-    setUserInfo(null);
-    navigate('/auth');
-  };
-
-  // 用户菜单项
-  const userMenuItems = [
-    {
-      key: 'settings',
-      label: (
-        <Link to="/settings" className="dropdown-item">
-          <SettingOutlined className="mr-2" />
-          个人设置
-        </Link>
-      ),
-    },
-    {
-      key: 'logout',
-      label: (
-        <div onClick={handleLogout} className="dropdown-item text-red-500">
-          <LogoutOutlined className="mr-2" />
-          退出登录
-        </div>
-      ),
-    },
   ];
 
-  const knowledgeLinks = [
-    {
-      title: "KakiAPI",
-      url: "https://api.kakiquant.icu/",
-      description: "API文档和使用指南"
-    },
-    {
-      title: "课程",
-      url: "https://www.wolai.com/kakiquant/courses",
-      description: "量化交易系列课程"
-    },
-    {
-      title: "新手指引",
-      url: "https://www.wolai.com/kakiquant/guide",
-      description: "从零开始的量化交易"
-    }
-  ];
-
-  const handleKnowledgeClick = () => {
-    navigate('/knowledge');
-    setIsKnowledgeOpen(false);
-  };
-
-  const handleLinkClick = (e, url) => {
-    e.stopPropagation(); // 阻止事件冒泡
-    window.open(url, '_blank');
-    setIsKnowledgeOpen(false);
-  };
+  const userMenu = (
+    <Menu className="bg-[#2c2d31] border-gray-700">
+      <Menu.Item key="settings" icon={<SettingOutlined />}>
+        <Link to="/settings" className="text-gray-300 hover:text-blue-400">设置</Link>
+      </Menu.Item>
+      <Menu.Item key="knowledge" icon={<BookOutlined />}>
+        <Link to="/knowledge" className="text-gray-300 hover:text-blue-400">知识库</Link>
+      </Menu.Item>
+      <Menu.Item key="about" icon={<QuestionCircleOutlined />}>
+        <Link to="/about" className="text-gray-300 hover:text-blue-400">关于我们</Link>
+      </Menu.Item>
+      <Menu.Divider className="border-gray-700" />
+      <Menu.Item key="logout" icon={<LogoutOutlined />} danger>
+        退出登录
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
-    <nav className="bg-gray-900 shadow-lg">
+    <nav className="bg-[#1a1b1e] shadow-lg fixed w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-xl font-bold text-white">
-              KakiQuant
+            <Link to="/" className="flex items-center">
+              <img
+                className="h-8 w-auto"
+                src="/kaki-logo.png"
+                alt="KakiQuant"
+              />
+              <span className="ml-3 text-lg font-semibold text-white">
+                KakiQuant
+              </span>
             </Link>
-          </div>
-          
-          <div className="hidden md:flex items-center space-x-4">
-            <Link to="/" className="nav-link">首页</Link>
-            <Link to="/llmchat" className="nav-link">AI策略设计</Link>
-            <Link to="/programming" className="nav-link">编写策略</Link>
-            <Link to="/data" className="nav-link">数据平台</Link>
-            <Link to="/factors" className="nav-link">因子研究</Link>
-            <Link to="/strategy" className="nav-link">策略社区</Link>
-            <Link to="/trading" className="nav-link">我的交易</Link>
-            
-            <div className="relative">
-              <div
-                className="nav-link flex items-center cursor-pointer"
-                onClick={() => setIsKnowledgeOpen(!isKnowledgeOpen)}
-              >
-                <span className="mr-1">知识库</span>
-                <svg
-                  className={`h-4 w-4 transition-transform ${
-                    isKnowledgeOpen ? 'rotate-180' : ''
-                  }`}
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              
-              {isKnowledgeOpen && (
-                <div className="knowledge-dropdown">
-                  {knowledgeLinks.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="knowledge-item"
-                      onClick={(e) => e.stopPropagation()}
+            <div className="ml-16 flex space-x-8">
+              {navigation.map((item) => (
+                item.children ? (
+                  <Dropdown
+                    key={item.name}
+                    overlay={
+                      <Menu className="bg-[#2c2d31] border-gray-700">
+                        {item.children.map((child) => (
+                          <Menu.Item key={child.path} icon={child.icon}>
+                            <Link
+                              to={child.path}
+                              className="text-gray-300 hover:text-blue-400"
+                            >
+                              {child.name}
+                            </Link>
+                          </Menu.Item>
+                        ))}
+                      </Menu>
+                    }
+                    placement="bottomLeft"
+                  >
+                    <div
+                      className={`flex items-center text-base font-medium cursor-pointer ${
+                        item.current
+                          ? 'text-blue-400'
+                          : 'text-gray-300 hover:text-blue-400'
+                      }`}
                     >
-                      <div className="font-medium text-gray-100">{link.title}</div>
-                      <div className="text-sm text-gray-400">{link.description}</div>
-                    </a>
-                  ))}
-                </div>
-              )}
+                      {item.icon}
+                      <span className="ml-2">{item.name}</span>
+                    </div>
+                  </Dropdown>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className={`flex items-center text-base font-medium ${
+                      item.current
+                        ? 'text-blue-400'
+                        : 'text-gray-300 hover:text-blue-400'
+                    }`}
+                  >
+                    {item.icon}
+                    <span className="ml-2">{item.name}</span>
+                  </Link>
+                )
+              ))}
             </div>
-            <Link to="/about" className="nav-link">关于我们</Link>
           </div>
-
-          <div className="flex items-center">
-            {isLoggedIn && userInfo ? (
-              <Dropdown
-                menu={{ items: userMenuItems }}
-                placement="bottomRight"
-                trigger={['click']}
-                className="cursor-pointer"
+          <div className="flex items-center space-x-6">
+            <Dropdown overlay={userMenu} placement="bottomRight" arrow>
+              <Button
+                type="primary"
+                icon={<UserOutlined />}
+                className="flex items-center bg-blue-600 hover:bg-blue-700"
               >
-                <div className="flex items-center space-x-3 text-gray-100">
-                  <Avatar
-                    size={32}
-                    src={userInfo.avatar}
-                    icon={<UserOutlined />}
-                    className="bg-blue-500"
-                  />
-                  <span className="hidden md:block">{userInfo.username}</span>
-                </div>
-              </Dropdown>
-            ) : (
-              <Link to="/auth">
-                <button className="btn btn-primary">登录</button>
-              </Link>
-            )}
+                用户中心
+              </Button>
+            </Dropdown>
           </div>
         </div>
       </div>
     </nav>
   );
-}
+};
 
-export default Navbar;
+export default Navbar; 

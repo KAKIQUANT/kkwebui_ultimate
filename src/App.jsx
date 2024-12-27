@@ -1,38 +1,39 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import Statistics from './components/Statistics';
-import Education from './components/Education';
-import CallToAction from './components/CallToAction';
-import './styles/app.css';
+import { Routes, Route } from 'react-router-dom';
+import LLMChat from './pages/LLMChat';
+import DataPage from './pages/data';
+import StrategyBuilder from './pages/StrategyBuilder';
+import ProgrammingPage from './pages/programming';
+import Register from './pages/register';
+import Settings from './pages/Settings';
+import About from './pages/About';
+import Knowledge from './pages/Knowledge';
+import Auth from './pages/Auth';
+import Home from './pages/Home';
+import AIStrategy from './pages/AIStrategy';
+import FactorResearch from './pages/FactorResearch';
+import StrategyCommunity from './pages/StrategyCommunity';
+import MyTrading from './pages/MyTrading';
 
-function App() {
-  const navigate = useNavigate();
-
-  const handleGetStarted = () => {
-    navigate('/register');
-  };
-
-  const handleLearnMore = () => {
-    navigate('/about');
-  };
-
+const App = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        <Hero onGetStarted={handleGetStarted} onLearnMore={handleLearnMore} />
-        <Features />
-        <Statistics />
-        <Education />
-        <CallToAction onRegister={handleGetStarted} />
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/strategy/llm-chat" element={<LLMChat />} />
+      <Route path="/data" element={<DataPage />} />
+      <Route path="/strategy/builder" element={<StrategyBuilder />} />
+      <Route path="/strategy/ai" element={<AIStrategy />} />
+      <Route path="/strategy/community" element={<StrategyCommunity />} />
+      <Route path="/strategy/programming" element={<ProgrammingPage />} />
+      <Route path="/factors/research" element={<FactorResearch />} />
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/trading/my" element={<MyTrading />} />
+      <Route path="/settings" element={<Settings />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/knowledge" element={<Knowledge />} />
+    </Routes>
   );
-}
+};
 
 export default App;

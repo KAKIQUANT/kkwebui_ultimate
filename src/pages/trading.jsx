@@ -1,106 +1,107 @@
-// pages/trading.jsx
-import React, { useState } from 'react';
-import Navbar from '../components/Navbar'; // 导航栏
-import Footer from '../components/Footer'; // 页脚
-import '../index.css'; // 引入全局样式
+import React from 'react';
+import { Layout, Card, Row, Col, Statistic } from 'antd';
+import { DollarOutlined, PercentageOutlined, LineChartOutlined } from '@ant-design/icons';
+import Navbar from '../components/Navbar';
 
-const strategies = [
-  {
-    name: '龙头股密语-1D',
-    type: '股票',
-    todayReturn: '0.00%',
-    totalReturn: '0.00%',
-    resources: '2C/80G',
-    startDate: '2024-04-01',
-    updateDate: '2024-06-21 13:44:26',
-    status: '已停止',
-  },
-  {
-    name: '股市逐浪者01',
-    type: '股票',
-    todayReturn: '0.68%',
-    totalReturn: '0.68%',
-    resources: '2C/80G',
-    startDate: '2024-04-01',
-    updateDate: '2024-06-21 13:44:26',
-    status: '已停止',
-  },
-  // 更多策略...
-];
+const { Content } = Layout;
 
 const Trading = () => {
-  const [tab, setTab] = useState('模拟交易'); // 当前选中的标签
-
   return (
-    <div>
+    <Layout className="min-h-screen">
       <Navbar />
-      <div className="trading-page">
-        {/* 顶部切换按钮 */}
-        <div className="tab-switch">
-          <button
-            className={tab === '模拟交易' ? 'active' : ''}
-            onClick={() => setTab('模拟交易')}
-          >
-            模拟交易
-          </button>
-          <button
-            className={tab === '我的组合' ? 'active' : ''}
-            onClick={() => setTab('我的组合')}
-          >
-            我的组合
-          </button>
-        </div>
+      <Layout style={{ marginTop: 64, minHeight: 'calc(100vh - 64px)', background: '#f0f2f5' }}>
+        <Content style={{ padding: '24px' }}>
+          <div className="max-w-7xl mx-auto">
+            {/* 账户概览 */}
+            <Row gutter={[16, 16]}>
+              <Col xs={24} sm={12} lg={6}>
+                <Card>
+                  <Statistic
+                    title="总资产"
+                    value={125678.45}
+                    precision={2}
+                    prefix={<DollarOutlined />}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={12} lg={6}>
+                <Card>
+                  <Statistic
+                    title="持仓市值"
+                    value={98765.32}
+                    precision={2}
+                    prefix={<DollarOutlined />}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={12} lg={6}>
+                <Card>
+                  <Statistic
+                    title="可用资金"
+                    value={26913.13}
+                    precision={2}
+                    prefix={<DollarOutlined />}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={12} lg={6}>
+                <Card>
+                  <Statistic
+                    title="总收益率"
+                    value={25.67}
+                    precision={2}
+                    prefix={<PercentageOutlined />}
+                    valueStyle={{ color: '#3f8600' }}
+                    suffix="%"
+                  />
+                </Card>
+              </Col>
+            </Row>
 
-        {/* 模拟交易或我的组合内容 */}
-        {tab === '模拟交易' && (
-          <div className="simulated-trading">
-            <h2>模拟交易总览</h2>
-            <p>今日收益: <span>0.34%</span></p>
-            <p>近一周收益: <span>0.34%</span></p>
-            <p>累计收益: <span>0.34%</span></p>
-
-            {/* 策略列表 */}
-            <table>
-              <thead>
-                <tr>
-                  <th>策略名称</th>
-                  <th>今日收益</th>
-                  <th>累计收益</th>
-                  <th>资源规格</th>
-                  <th>运行开始日期</th>
-                  <th>更新日期</th>
-                  <th>状态</th>
-                </tr>
-              </thead>
-              <tbody>
-                {strategies.map((strategy, index) => (
-                  <tr key={index}>
-                    <td>{strategy.name} <span>{strategy.type}</span></td>
-                    <td>{strategy.todayReturn}</td>
-                    <td>{strategy.totalReturn}</td>
-                    <td>{strategy.resources}</td>
-                    <td>{strategy.startDate}</td>
-                    <td>{strategy.updateDate}</td>
-                    <td>{strategy.status}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {/* 策略绩效 */}
+            <Card title="策略绩效" className="mt-6">
+              <Row gutter={[16, 16]}>
+                <Col xs={24} md={8}>
+                  <Card bordered={false}>
+                    <Statistic
+                      title="年化收益率"
+                      value={32.45}
+                      precision={2}
+                      prefix={<LineChartOutlined />}
+                      valueStyle={{ color: '#3f8600' }}
+                      suffix="%"
+                    />
+                  </Card>
+                </Col>
+                <Col xs={24} md={8}>
+                  <Card bordered={false}>
+                    <Statistic
+                      title="最大回撤"
+                      value={15.23}
+                      precision={2}
+                      prefix={<LineChartOutlined />}
+                      valueStyle={{ color: '#cf1322' }}
+                      suffix="%"
+                    />
+                  </Card>
+                </Col>
+                <Col xs={24} md={8}>
+                  <Card bordered={false}>
+                    <Statistic
+                      title="夏普比率"
+                      value={2.34}
+                      precision={2}
+                      prefix={<LineChartOutlined />}
+                    />
+                  </Card>
+                </Col>
+              </Row>
+            </Card>
           </div>
-        )}
-
-        {tab === '我的组合' && (
-          <div className="my-portfolio">
-            <h2>我的组合</h2>
-            {/* 组合数据... */}
-            <p>暂无组合数据，请点击下方创建新的组合。</p>
-            <button className="create-portfolio-btn">+ 创建组合</button>
-          </div>
-        )}
-      </div>
-      <Footer />
-    </div>
+        </Content>
+      </Layout>
+    </Layout>
   );
 };
 
-export default Trading;
+export default Trading; 

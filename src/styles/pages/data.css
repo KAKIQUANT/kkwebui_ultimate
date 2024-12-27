@@ -1,0 +1,139 @@
+/* 数据平台页面样式 */
+.ant-card {
+  @apply transition-all duration-300;
+}
+
+.ant-card-hoverable:hover {
+  @apply transform -translate-y-1;
+}
+
+/* 暗色模式适配 */
+.dark .ant-card {
+  @apply bg-gray-800 border-gray-700;
+}
+
+.dark .ant-card-head {
+  @apply border-gray-700;
+}
+
+.dark .ant-card-head-title {
+  @apply text-gray-200;
+}
+
+.dark .ant-statistic-title {
+  @apply text-gray-400;
+}
+
+.dark .ant-statistic-content {
+  @apply text-gray-200;
+}
+
+/* 搜索框样式 */
+.ant-input-search {
+  @apply w-full max-w-2xl;
+}
+
+.dark .ant-input-search .ant-input {
+  @apply bg-gray-700 border-gray-600 text-gray-200;
+}
+
+.dark .ant-input-search .ant-input:focus {
+  @apply border-blue-500;
+}
+
+.dark .ant-input-search .ant-input-search-button {
+  @apply bg-blue-600 border-blue-600;
+}
+
+/* 分类菜单样式 */
+.category-item {
+  @apply flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors;
+}
+
+.category-item:hover {
+  @apply bg-gray-50;
+}
+
+.dark .category-item:hover {
+  @apply bg-gray-700;
+}
+
+.category-item.active {
+  @apply bg-blue-50 text-blue-600;
+}
+
+.dark .category-item.active {
+  @apply bg-blue-900 text-blue-400;
+}
+
+/* 数据卡片样式 */
+.data-card {
+  @apply rounded-lg border border-gray-200 overflow-hidden;
+}
+
+.dark .data-card {
+  @apply border-gray-700;
+}
+
+.data-card-header {
+  @apply flex justify-between items-start p-4 border-b border-gray-200;
+}
+
+.dark .data-card-header {
+  @apply border-gray-700;
+}
+
+.data-card-title {
+  @apply text-xl font-bold;
+}
+
+.dark .data-card-title {
+  @apply text-white;
+}
+
+.data-card-code {
+  @apply text-sm font-mono text-gray-500;
+}
+
+.data-card-description {
+  @apply text-gray-600 mt-2;
+}
+
+.dark .data-card-description {
+  @apply text-gray-300;
+}
+
+/* 标签样式 */
+.ant-tag {
+  @apply border-0;
+}
+
+/* 统计数字样式 */
+.ant-statistic-content-value {
+  @apply font-bold;
+}
+
+/* 加载状态样式 */
+.loading-overlay {
+  @apply absolute inset-0 flex items-center justify-center bg-white bg-opacity-75;
+}
+
+.dark .loading-overlay {
+  @apply bg-gray-900 bg-opacity-75;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+} 

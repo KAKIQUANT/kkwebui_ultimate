@@ -4,7 +4,7 @@
 
 @layer components {
   .settings-input {
-    @apply bg-gray-700 border-gray-600 text-gray-100 !important;
+    @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600;
   }
 
   .settings-input input {
@@ -21,19 +21,19 @@
   }
 
   .settings-tabs .ant-tabs-tab {
-    @apply text-gray-400 !important;
+    @apply text-gray-600 dark:text-gray-400;
   }
 
   .settings-tabs .ant-tabs-tab:hover {
-    @apply text-gray-300 !important;
+    @apply text-blue-500 dark:text-blue-400;
   }
 
   .settings-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    @apply text-blue-500 !important;
+    @apply text-blue-600 dark:text-blue-500;
   }
 
   .settings-tabs .ant-tabs-ink-bar {
-    @apply bg-blue-500 !important;
+    @apply bg-blue-600 dark:bg-blue-500;
   }
 
   /* 表格样式 */
@@ -60,5 +60,74 @@
 
   .ant-btn-dangerous:hover {
     @apply bg-red-700 border-red-700 !important;
+  }
+
+  /* Modal 样式 */
+  .settings-modal .ant-modal-content {
+    @apply bg-gray-800 border border-gray-700;
+  }
+
+  .settings-modal .ant-modal-header {
+    @apply bg-gray-800 border-b border-gray-700;
+  }
+
+  .settings-modal .ant-modal-title {
+    @apply text-gray-100;
+  }
+
+  .settings-modal .ant-modal-close {
+    @apply text-gray-400 hover:text-gray-200;
+  }
+
+  .settings-modal .ant-modal-body {
+    @apply text-gray-300 !important;
+  }
+
+  .settings-modal .ant-modal-footer {
+    @apply border-t border-gray-700;
+  }
+
+  /* Alert 样式 */
+  .settings-modal .ant-alert {
+    @apply bg-yellow-900/50 border-yellow-600/50 !important;
+  }
+
+  .settings-modal .ant-alert-message {
+    @apply text-yellow-200 !important;
+  }
+
+  .settings-modal .ant-alert-description {
+    @apply text-yellow-100 !important;
+  }
+
+  .settings-modal .ant-alert-icon {
+    @apply text-yellow-400 !important;
+  }
+
+  /* 代码块样式 */
+  .settings-modal pre {
+    @apply font-mono text-sm leading-relaxed overflow-x-auto;
+  }
+
+  /* 复制按钮样式 */
+  .copy-button {
+    @apply text-gray-400 hover:text-blue-400 transition-colors !important;
+  }
+
+  /* Switch Styles */
+  .ant-switch {
+    @apply bg-gray-400;
+  }
+
+  .ant-switch-checked {
+    @apply bg-blue-600;
+  }
+
+  .ant-switch:hover:not(.ant-switch-disabled) {
+    @apply bg-gray-500;
+  }
+
+  .ant-switch-checked:hover:not(.ant-switch-disabled) {
+    @apply bg-blue-700;
   }
 } 

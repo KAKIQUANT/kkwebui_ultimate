@@ -37,38 +37,42 @@ const ProgrammingPage = () => {
   };
 
   return (
-    <div className="programming-page">
+    <div className="min-h-screen bg-[#1a1b1e]">
       <Navbar />
-      <div className="programming-content">
-        <div className="lab-access">
-          <Button 
-            type="primary" 
-            size="large"
-            icon={<ExperimentOutlined />}
-            onClick={() => window.open(jupyterLabUrl, '_blank')}
-          >
-            打开 JupyterLab
-          </Button>
-        </div>
-        
-        <div className="strategies-grid">
-          {strategies.map((strategy, index) => (
-            <Card
-              key={index}
-              className="strategy-card"
-              title={strategy.title}
-              extra={
-                <Button 
-                  type="link" 
-                  onClick={() => openNotebook(strategy.notebook)}
+      <div className="pt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="programming-content">
+            <div className="lab-access">
+              <Button 
+                type="primary" 
+                size="large"
+                icon={<ExperimentOutlined />}
+                onClick={() => window.open(jupyterLabUrl, '_blank')}
+              >
+                打开 JupyterLab
+              </Button>
+            </div>
+            
+            <div className="strategies-grid">
+              {strategies.map((strategy, index) => (
+                <Card
+                  key={index}
+                  className="strategy-card"
+                  title={strategy.title}
+                  extra={
+                    <Button 
+                      type="link" 
+                      onClick={() => openNotebook(strategy.notebook)}
+                    >
+                      打开策略
+                    </Button>
+                  }
                 >
-                  打开策略
-                </Button>
-              }
-            >
-              <p>{strategy.description}</p>
-            </Card>
-          ))}
+                  <p>{strategy.description}</p>
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
       <Footer />

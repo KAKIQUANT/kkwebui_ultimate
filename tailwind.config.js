@@ -13,8 +13,10 @@ export default {
         },
         secondary: {
           dark: '#1a1a1a',
+          600: '#404040',
           700: '#2d2d2d',
           800: '#262626',
+          900: '#171717',
         },
         accent: '#7c3aed',
       },
